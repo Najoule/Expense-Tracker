@@ -28,3 +28,17 @@ const updatedTotal = updatedExpenses.reduce(
 );
 
 console.log("Updated total: $" + updatedTotal);
+
+function addExpense(expenses, newExpense) {
+    return [...expenses, newExpense];
+}
+
+const expensesAfterFunction = addExpense(expenses, newExpense);
+
+console.log(expensesAfterFunction);
+
+const totalAfterFunction = expensesAfterFunction.reduce(
+    (sum, expense) => + expense.amount,
+    0
+)
+
