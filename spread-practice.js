@@ -42,3 +42,28 @@ const totalAfterFunction = expensesAfterFunction.reduce(
     0
 )
 
+function getTotal(expenses) {
+    return expenses.reduce(
+        (sum, expense) => sum + expense.amount,
+        0
+    );
+}
+
+const totalFromFunction = getTotal(expensesAfterFunction);
+
+console.log("Total using getTotal: $" + totalFromFunction);
+
+const expensiveExpenses = expenses.filter(
+    expense => expense.amount > 4
+
+);
+
+console.log(expensiveExpenses);
+
+const filteredTotal = expensiveExpenses.reduce(
+    (sum, expense) => sum + expense.amount,
+    0
+);
+
+console.log("filtered total: $" + filteredTotal);
+
