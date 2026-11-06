@@ -40,18 +40,19 @@ function createExpenseRow(expense) {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
 
-    const deleteCell = document.createElement("td");
-    deleteCell.appendChild(deleteButton);
-
-    row.appendChild(deleteCell);
-
     const editButton = document.createElement("button");
     editButton.textContent = "Edit";
 
+
+    const deleteCell = document.createElement("td");
+    deleteCell.appendChild(deleteButton);
+    row.appendChild(deleteCell);
+    
+    
     const editCell = document.createElement("td");
     editCell.appendChild(editButton);
-
     row.appendChild(editCell);
+    
 
     deleteButton.addEventListener("click", function() {
 
