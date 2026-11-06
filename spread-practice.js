@@ -67,3 +67,38 @@ const filteredTotal = expensiveExpenses.reduce(
 
 console.log("filtered total: $" + filteredTotal);
 
+const bigExpenses = expenses
+    .map(expense =>
+        expense.description === "Lunch"
+            ? { ...expense, amount: 20 }
+            : expense
+    );
+
+console.log("Updated expenses:", bigExpenses);
+
+const expensesWithoutBus = expenses.filter(
+    expense => expense.description !== "Coffee"
+);
+
+console.log("Without Bus:", expensesWithoutBus);
+
+const expensesOver4 = expenses.filter(
+    expense => expense.amount > 4
+
+);
+
+const totalOver4 = expensesOver4.reduce(
+    (sum, expense) => sum + expense.amount,
+    0
+);
+
+console.log("Total over $4: $" + totalOver4);
+
+const updatedLunch = expenses.map(expense =>
+    expense.description === "Lunch"
+        ? { ...expense, amount: 20 }
+        : expense
+
+);
+
+console.log("Edited expenses:", updatedLunch);

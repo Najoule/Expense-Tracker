@@ -12,6 +12,8 @@ const savedExpenses = localStorage.getItem("expenses");
 
 const expenses = savedExpenses ? JSON.parse(savedExpenses) : [];
 
+const clearExpensesBtn = document.getElementById("clearExpensesBtn");
+
 function calculateTotal() {
 
     let total = 0;
@@ -134,9 +136,12 @@ function renderExpenses() {
     const total = calculateTotal();
 
     totalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+    expenseCountDisplay.textContent =
+        `You have ${expenses.length} ${expenses.length === 1 ? "expense" : "expenses"}`;
 }
 
 const totalDisplay = document.getElementById("totalExpenses");
+const expenseCountDisplay = document.getElementById("expenseCount");
 
 
 renderExpenses();
@@ -191,6 +196,18 @@ addExpenseBtn.addEventListener("click", function() {
 
     descriptionInput.value = "";
     amountInput.value = "";
+
+});
+
+clearExpensesBtn.addEventListener("click", function() {
+
+    expenses.length = 0;
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    expenseList.innerHTML = "";
+
+    renderExpenses();
 
 });
 
