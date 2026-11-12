@@ -14,6 +14,12 @@ const expenses = savedExpenses ? JSON.parse(savedExpenses) : [];
 
 const clearExpensesBtn = document.getElementById("clearExpensesBtn");
 
+const sortHighToLowBtn = document.querySelector("#sort-high-to-low-btn");
+
+const sortLowToHighBtn = document.querySelector("#sort-low-to-high-btn");
+
+console.log(sortLowToHighBtn);
+
 function calculateTotal() {
 
     let total = 0;
@@ -125,6 +131,8 @@ function createExpenseRow(expense) {
 }
 
 function renderExpenses() {
+
+    expenseList.innerHTML = "";
     
     expenses.forEach(function(expense) {
 
@@ -139,6 +147,20 @@ function renderExpenses() {
     totalDisplay.textContent = `Total: $${total.toFixed(2)}`;
     expenseCountDisplay.textContent =
         `You have ${expenses.length} ${expenses.length === 1 ? "expense" : "expenses"}`;
+}
+
+function sortExpensesHighToLow() {
+
+    expenses.sort((a, b) => b.amount - a.amount);
+
+    renderExpenses();
+}
+
+function sortExpensesLowToHigh() {
+
+    expenses.sort((a, b) => a.amount - b.amount);
+    
+    renderExpenses();
 }
 
 const totalDisplay = document.getElementById("totalExpenses");
@@ -210,5 +232,16 @@ clearExpensesBtn.addEventListener("click", function() {
 
     renderExpenses();
 
+});
+
+sortHighToLowBtn.addEventListener("click", function() {
+
+    sortExpensesHighToLow();
+});
+
+
+sortLowToHighBtn.addEventListener("click", function () {
+
+    sortExpensesLowToHigh();
 });
 
