@@ -43,6 +43,10 @@ function createExpenseRow(expense) {
     amountCell.textContent = `$${expense.amount.toFixed(2)}`;
     row.appendChild(amountCell);
 
+    const dateCell = document.createElement("td");
+    dateCell.textContent = new Date(expense.date).toLocaleDateString();
+    row.appendChild(dateCell);
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
 
@@ -202,7 +206,8 @@ addExpenseBtn.addEventListener("click", function() {
 
     const expense = {
         description: description,
-        amount: amount
+        amount: amount,
+        date: new Date().toISOString()
     };
 
     expenses.push(expense);
