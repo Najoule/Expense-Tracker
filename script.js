@@ -20,6 +20,10 @@ const sortLowToHighBtn = document.querySelector("#sort-low-to-high-btn");
 
 console.log(sortLowToHighBtn);
 
+const sortNewestToOldestBtn = document.querySelector("#sort-newest-to-oldest-btn");
+
+const soertOldestToNewestBtn = document.querySelector("#sort-oldest-to-newest-btn");
+
 function calculateTotal() {
 
     let total = 0;
@@ -167,6 +171,15 @@ function sortExpensesLowToHigh() {
     renderExpenses();
 }
 
+function sortExpensesNewestToOldest() {
+
+    expenses.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    renderExpenses();
+}
+
 const totalDisplay = document.getElementById("totalExpenses");
 const expenseCountDisplay = document.getElementById("expenseCount");
 
@@ -250,3 +263,23 @@ sortLowToHighBtn.addEventListener("click", function () {
     sortExpensesLowToHigh();
 });
 
+sortNewestToOldestBtn.addEventListener("click", function() {
+    console.log("Newest to Oldest button clicked!")
+
+    sortExpensesNewestToOldest();
+
+    console.log(expenses.map(expense => expense.description));
+});
+
+soertOldestToNewestBtn.addEventListener("click", function() {
+    sortExpensesOldesttoNewest();
+});
+
+
+function sortExpensesOldesttoNewest() {
+    expenses.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+    });
+
+    renderExpenses();
+}
